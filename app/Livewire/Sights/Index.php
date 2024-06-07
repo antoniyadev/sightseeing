@@ -15,6 +15,7 @@ class Index extends Component
     public Collection $categories;
 
     public $searchCategory = 0;
+    public $searchLocation = '';
     public $searchText = '';
 
     public $minPrice = '';

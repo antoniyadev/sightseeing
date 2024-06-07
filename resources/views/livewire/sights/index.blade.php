@@ -25,6 +25,8 @@
             </div>
         </div>
     </div>
+
+    <livewire:map-form />
     <x-breadcrumbs class="mb-4" :links="['Sights' => route('sights.index')]"></x-breadcrumbs>
     <div class="grid grid-cols-4 gap-4 mb-4"> 
         @foreach ($sights as $sight)
