@@ -21,8 +21,15 @@ class SightFactory extends Factory
             'title' => fake()->words(3, true),
             'description' => fake()->paragraphs(3, true),
             'price' => fake()->numberBetween(1, 100),
-            'latitude' => fake()->latitude(),
-            'longitude' => fake()->longitude(),
+            // 'latitude' => fake()->latitude(),
+            // 'longitude' => fake()->longitude(),
+            // 'city' => fake()->city(),
+            // 'address_postcode' => fake()->postcode(),
+            // 'address_street' => fake()->streetAddress(),
+            'city' => 'Sofia',
+            'country' => 'Bulgaria',
+            'address_postcode' => '1421',
+            'address_street' => 'Dobar Yunak 13',
             'category_id' => Category::factory()
         ];
     }

@@ -1,7 +1,7 @@
 <div> 
     <form>
         <div class="flex flex-row justify-between">
-            {{-- <livewire:map-search-box /> --}}
+            <livewire:map-search-box />
         </div>
   
         <livewire:map />

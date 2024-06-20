@@ -15,8 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->string('latitude');
-            $table->string('longitude');
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
+            $table->string('address_street')->nullable();
+            $table->string('address_postcode')->nullable();
             $table->unsignedInteger('price');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->timestamps();

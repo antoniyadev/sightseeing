@@ -12,14 +12,15 @@ class MapSearchBox extends Component
     {
         // Use a custom service to get address' lat-long coordinates
         // Either through Google GeoCoder or some other translator
-        $coordinates = \GoogleMaps::load('geocoding')
-            ->setParam(['address' => $this->address])
-            ->get();
-        // Dispatch event to the page
-        $this->dispatchBrowserEvent('updatedMapLocation', [
-            'lat' => $coordinates->getLatitude(),
-            'lng' => $coordinates->getLongitude()
-        ]);
+        $result = app('geocoder')->geocode($this->address)->get();
+        if ($result->isNotEmpty()) {
+            $coordinates = $result[0]->getCoordinates();
+            // Dispatch event to the page
+            $this->dispatch('updatedMapLocation', [
+                'lat' => $coordinates->getLatitude(),
+                'lng' => $coordinates->getLongitude()
+            ]);
+        }
     }
 
     public function render()

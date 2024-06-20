@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Observers\SightObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -28,5 +29,11 @@ class Sight extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public static function booted()
+    {
+        parent::booted();
+        self::observe(SightObserver::class);
     }
 }
