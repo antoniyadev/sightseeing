@@ -13,6 +13,19 @@ class Sight extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'description',
+        'latitude',
+        'longitude',
+        'city',
+        'country',
+        'address_street',
+        'address_postcode',
+        'price',
+        'category_id'
+    ];
+
     public function workingHours(): HasMany
     {
         return $this->hasMany(WorkingHour::class);
