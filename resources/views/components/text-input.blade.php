@@ -1,1 +1,3 @@
-<input type="text" wire:model.live="{{$wireModelLive}}" placeholder="{{$placeholder}}" name="{{$name}}" value="{{$value}}" id="{{$name}}" class="w-full rounded-md border-0 py-1.5 px-2.5 text-sm ring-1 ring-slate-300 placeholder:text-slate-400 focus:ring-2"/>
+@props(['disabled' => false])
+
+<input {{ $disabled ? 'disabled' : '' }} {!! $attributes->merge(['class' => 'border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm']) !!}>

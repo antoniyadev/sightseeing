@@ -17,5 +17,15 @@ Route::redirect('/', '/sights');
 
 Route::name('sights.')->prefix('sights')->group(function () {
     Route::get('/', Sights\Index::class)->name('index');
-    Route::get('/{sight}', Sights\Show::class)->name('show');
+    Route::get('/{sight}', Sights\Show::class)->name('show')->middleware(['auth']);
 });
+
+// Route::view('dashboard', 'dashboard')
+//     ->middleware(['auth', 'verified'])
+//     ->name('dashboard');
+
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
+
+require __DIR__ . '/auth.php';
