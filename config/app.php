@@ -188,4 +188,5 @@ return [
         'GoogleMaps' => GoogleMaps\Facade\GoogleMapsFacade::class,
     ])->toArray(),
 
+    'googleMapsApiKey' => env('GOOGLE_MAPS_API_KEY'),
 ];
