@@ -12,8 +12,7 @@
 -   Generate a new app key with `php artisan key:generate`
 -   Prepare the database by running `php artisan migrate`
 -   (Optional) Seed the database by running:
-    `php artisan db:seed --class=WorldSeeder`
-    `php artisan db:seed --class=DatabaseSeeder`
+    `php artisan db:seed --class=WorldSeeder && php artisan db:seed --class=DatabaseSeeder`
 -   Install and compile the front-end dependencies with `npm install && npm run dev`
 -   Set a valid APP_URL, DB_DATABASE, DB_USERNAME, DB_PASSWORD value in your .env file
 -   Serve the website locally by running `php artisan serve`
