@@ -32,7 +32,7 @@ class SightFactory extends Factory
             'longitude' => fake()->longitude(),
             'address_postcode' => fake()->postcode(),
             'address_street' => fake()->streetAddress(),
-            'city_id' => City::all()->random()->id,
+            // 'city_id' => City::all()->random()->id,
             'category_id' => Category::factory()
         ];
     }

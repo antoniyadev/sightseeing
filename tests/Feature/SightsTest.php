@@ -2,15 +2,20 @@
 
 namespace Tests\Feature;
 
+use App\Livewire\Sights\Index;
+use App\Models\City;
+use App\Models\Country;
 use App\Models\Sight;
 use Filament\Notifications\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 class SightsTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, WithFaker;
     /**
      * test_sights_page_contains_empty_table
      */
@@ -24,14 +29,15 @@ class SightsTest extends TestCase
 
     public function test_sights_page_contains_table_with_data(): void
     {
-        $sight = Sight::factory()->create();
-        $response = $this->get('/sights');
+        $city = City::factory()->create();
+        $sight = Sight::factory()->create(['city_id' => $city->id]);
+        $component = Livewire::test(Index::class);
 
-        $response
+        $component
             ->assertStatus(200)
             ->assertDontSee('No sights found')
-            ->assertViewHas('sights', function (Collection $collection) use ($sight) {
-            return $collection->contains($sight);
-        });
+            ->assertViewHas('sights', function (LengthAwarePaginator $collection) use ($sight) {
+                return $collection->contains($sight);
+            });
     }
 }
