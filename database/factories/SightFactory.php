@@ -19,6 +19,8 @@ class SightFactory extends Factory
      */
     public function definition(): array
     {
+        $city = City::factory()->create();
+
         $filepath = public_path('images/sights');
         if (!File::exists($filepath)) {
             File::makeDirectory($filepath);
@@ -32,7 +34,7 @@ class SightFactory extends Factory
             'longitude' => fake()->longitude(),
             'address_postcode' => fake()->postcode(),
             'address_street' => fake()->streetAddress(),
-            // 'city_id' => City::all()->random()->id,
+            'city_id' => $city->id,
             'category_id' => Category::factory()
         ];
     }

@@ -29,8 +29,7 @@ class SightsTest extends TestCase
 
     public function test_sights_page_contains_table_with_data(): void
     {
-        $city = City::factory()->create();
-        $sight = Sight::factory()->create(['city_id' => $city->id]);
+        $sight = Sight::factory()->create();
         $component = Livewire::test(Index::class);
 
         $component
@@ -40,4 +39,16 @@ class SightsTest extends TestCase
                 return $collection->contains($sight);
             });
     }
+
+    public function test_sighs_pagination_doesnt_contain_10th_record() {
+        $sights = Sight::factory(10)->create();
+        $lastSight = $sights->last();
+        $component = Livewire::test(Index::class);
+        $component->assertStatus(200)
+        ->assertViewHas('sights', function (LengthAwarePaginator $collection) use ($lastSight) {
+            return $collection->doesntContain($lastSight);
+        });
+    }
+
+
 }

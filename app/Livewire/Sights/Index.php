@@ -51,7 +51,7 @@ class Index extends Component
             // ->when($this->minPrice != '', fn (Builder $query) => $query->where('price', '>=', $this->minPrice))
             ->when($this->maxPrice, fn (Builder $query) => $query->where('price', '<=', $this->maxPrice))
             ->when($this->searchLocation, fn (Builder $query) => $query->where('city_id', '=', $this->searchLocation))
-            ->paginate(10);
+            ->paginate(9);
         return view('livewire.sights.index', ['sights' => $sights]);
     }
 
@@ -63,5 +63,10 @@ class Index extends Component
         }
         Cart::add(Sight::where('id', $sightId)->first(), $quantity);
         $this->dispatch('cart-updated', quantity: $quantity, message: "Ticket added to cart!");
+    }
+
+    public function paginationView()
+    {
+        return 'custom-pagination-links-view';
     }
 }

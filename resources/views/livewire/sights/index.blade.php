@@ -66,6 +66,10 @@
         >
         @endforeach
     </div>
+    <div class="flex justify-center mb-10 join">
+        {{ $sights->links('custom-pagination-links-view') }}
+    </div>
+
     @else
     <p class="m-5 text-3xl text-center">No sights found</p>
     @endif
